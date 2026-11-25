@@ -7,13 +7,14 @@ new_kleaf_local_repository = use_repo_rule(
 
 new_kleaf_local_repository(
     name="mgk_internal",
-    path="../vendor/mediatek",
+    # vendor/ sits inside the kernel checkout here (MediaTek's own trees have it next to it).
+    path_candidates=["vendor/mediatek", "../vendor/mediatek"],
     build_file = "build/bazel_mgk_rules/kleaf/BUILD.internal"
 )
 
 new_kleaf_local_repository(
     name="mgk_ko",
-    path="../vendor/mediatek/kernel_modules",
+    path_candidates=["vendor/mediatek/kernel_modules", "../vendor/mediatek/kernel_modules"],
     build_file = "build/bazel_mgk_rules/kleaf/BUILD.ko"
 )
 
